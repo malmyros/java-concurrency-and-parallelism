@@ -7,6 +7,8 @@ public class ExecutorExplorer {
 
     public static void main(String[] args) {
 
+        // Different Executors factory methods can be found bellow
+        // https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Executors.html
         try (ExecutorService executorService = Executors.newSingleThreadExecutor()) {
 
             for (int i = 0; i < 100; i++) {
