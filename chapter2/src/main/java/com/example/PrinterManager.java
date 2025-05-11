@@ -48,7 +48,19 @@ public class PrinterManager {
 
             // Simulate printing time
             Thread.sleep(1000);
+
+            // This will cause the other workers to timeout as the
+            // they are awaiting for the condition to be true and
+            // to be signalled that they can start working again
             isPrinterReady = false;
+
+            // This will bring the printer back to the ready state
+            // and will signal all waiting threads that they can
+            // print next. The remaining threads will try to acquire
+            // the printer lock and the one that doesn't will wait
+            // again it's turn with a timeout
+            // isPrinterReady = true;
+            // readyCondition.signal();
 
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
